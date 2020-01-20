@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="batch_school">
+	<table_structure name="class">
+		<field Field="id" Type="char(36)" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="subject" Type="varchar(45)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="class" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="class" Non_unique="0" Key_name="class_id_uindex" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="class" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="4" Avg_row_length="4096" Data_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Create_time="2020-01-20 16:56:40" Update_time="2020-01-21 17:13:21" Collation="utf8mb4_0900_ai_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_data name="class">
+	<row>
+		<field name="id">0273bef8-040c-4f1a-b3fd-b3db00cc16a0</field>
+		<field name="subject">Technology</field>
+	</row>
+	<row>
+		<field name="id">2655d463-fce4-4b37-8d5a-fdca97d79b9a</field>
+		<field name="subject">Maths</field>
+	</row>
+	<row>
+		<field name="id">383dc8ce-02fd-49c2-8be5-30fe6cd569e9</field>
+		<field name="subject">Engineering</field>
+	</row>
+	<row>
+		<field name="id">b057e19b-50ad-4690-b8eb-070486c21655</field>
+		<field name="subject">Science</field>
+	</row>
+	</table_data>
+	<table_structure name="class_pupil">
+		<field Field="pupil_id" Type="char(36)" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="class_id" Type="char(36)" Null="NO" Key="PRI" Extra="" Comment="" />
+		<key Table="class_pupil" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="pupil_id" Collation="A" Cardinality="6" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="class_pupil" Non_unique="0" Key_name="PRIMARY" Seq_in_index="2" Column_name="class_id" Collation="A" Cardinality="14" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="class_pupil" Non_unique="0" Key_name="class_pupil_pupil_id_class_id_uindex" Seq_in_index="1" Column_name="pupil_id" Collation="A" Cardinality="6" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="class_pupil" Non_unique="0" Key_name="class_pupil_pupil_id_class_id_uindex" Seq_in_index="2" Column_name="class_id" Collation="A" Cardinality="14" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="class_pupil" Non_unique="1" Key_name="class_pupil_class_id_fk" Seq_in_index="1" Column_name="class_id" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="class_pupil" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="14" Avg_row_length="1170" Data_length="16384" Max_data_length="0" Index_length="32768" Data_free="0" Create_time="2020-01-20 16:59:42" Update_time="2020-01-21 17:13:21" Collation="utf8mb4_0900_ai_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_data name="class_pupil">
+	<row>
+		<field name="pupil_id">061a5eb4-e9ed-4e7c-a797-41ea0c6c7d0e</field>
+		<field name="class_id">0273bef8-040c-4f1a-b3fd-b3db00cc16a0</field>
+	</row>
+	<row>
+		<field name="pupil_id">1ef28108-f158-45dc-b764-c58ec783756f</field>
+		<field name="class_id">0273bef8-040c-4f1a-b3fd-b3db00cc16a0</field>
+	</row>
+	<row>
+		<field name="pupil_id">6cde4e97-ba34-4431-8dc5-8c6c8ef72512</field>
+		<field name="class_id">0273bef8-040c-4f1a-b3fd-b3db00cc16a0</field>
+	</row>
+	<row>
+		<field name="pupil_id">16a4eeb0-b4d2-4d75-9710-699f1219bc23</field>
+		<field name="class_id">2655d463-fce4-4b37-8d5a-fdca97d79b9a</field>
+	</row>
+	<row>
+		<field name="pupil_id">6cde4e97-ba34-4431-8dc5-8c6c8ef72512</field>
+		<field name="class_id">2655d463-fce4-4b37-8d5a-fdca97d79b9a</field>
+	</row>
+	<row>
+		<field name="pupil_id">fa5daa92-7d5b-40cc-b0a5-31ec04473122</field>
+		<field name="class_id">2655d463-fce4-4b37-8d5a-fdca97d79b9a</field>
+	</row>
+	<row>
+		<field name="pupil_id">061a5eb4-e9ed-4e7c-a797-41ea0c6c7d0e</field>
+		<field name="class_id">383dc8ce-02fd-49c2-8be5-30fe6cd569e9</field>
+	</row>
+	<row>
+		<field name="pupil_id">1ef28108-f158-45dc-b764-c58ec783756f</field>
+		<field name="class_id">383dc8ce-02fd-49c2-8be5-30fe6cd569e9</field>
+	</row>
+	<row>
+		<field name="pupil_id">6cde4e97-ba34-4431-8dc5-8c6c8ef72512</field>
+		<field name="class_id">383dc8ce-02fd-49c2-8be5-30fe6cd569e9</field>
+	</row>
+	<row>
+		<field name="pupil_id">f86c073a-b63f-49b7-92cb-bf5fe7cb235f</field>
+		<field name="class_id">383dc8ce-02fd-49c2-8be5-30fe6cd569e9</field>
+	</row>
+	<row>
+		<field name="pupil_id">fa5daa92-7d5b-40cc-b0a5-31ec04473122</field>
+		<field name="class_id">383dc8ce-02fd-49c2-8be5-30fe6cd569e9</field>
+	</row>
+	<row>
+		<field name="pupil_id">061a5eb4-e9ed-4e7c-a797-41ea0c6c7d0e</field>
+		<field name="class_id">b057e19b-50ad-4690-b8eb-070486c21655</field>
+	</row>
+	<row>
+		<field name="pupil_id">16a4eeb0-b4d2-4d75-9710-699f1219bc23</field>
+		<field name="class_id">b057e19b-50ad-4690-b8eb-070486c21655</field>
+	</row>
+	<row>
+		<field name="pupil_id">f86c073a-b63f-49b7-92cb-bf5fe7cb235f</field>
+		<field name="class_id">b057e19b-50ad-4690-b8eb-070486c21655</field>
+	</row>
+	</table_data>
+	<table_structure name="pupil">
+		<field Field="id" Type="char(36)" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="name" Type="varchar(45)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="pupil" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="6" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="pupil" Non_unique="0" Key_name="pupil_id_uindex" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="6" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="pupil" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="6" Avg_row_length="2730" Data_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Create_time="2020-01-20 16:56:56" Update_time="2020-01-21 17:13:21" Collation="utf8mb4_0900_ai_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_data name="pupil">
+	<row>
+		<field name="id">061a5eb4-e9ed-4e7c-a797-41ea0c6c7d0e</field>
+		<field name="name">Rose</field>
+	</row>
+	<row>
+		<field name="id">16a4eeb0-b4d2-4d75-9710-699f1219bc23</field>
+		<field name="name">meg</field>
+	</row>
+	<row>
+		<field name="id">1ef28108-f158-45dc-b764-c58ec783756f</field>
+		<field name="name">Harry</field>
+	</row>
+	<row>
+		<field name="id">6cde4e97-ba34-4431-8dc5-8c6c8ef72512</field>
+		<field name="name">Joe</field>
+	</row>
+	<row>
+		<field name="id">f86c073a-b63f-49b7-92cb-bf5fe7cb235f</field>
+		<field name="name">Phil</field>
+	</row>
+	<row>
+		<field name="id">fa5daa92-7d5b-40cc-b0a5-31ec04473122</field>
+		<field name="name">Mac</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>
