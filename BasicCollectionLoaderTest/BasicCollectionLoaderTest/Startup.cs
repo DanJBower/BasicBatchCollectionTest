@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using SchoolEfCore.Context;
 using SchoolEfCore.Interfaces;
@@ -33,13 +34,14 @@ namespace BasicCollectionLoaderTest
             services.AddScoped<ISchema, SchoolSchema>();
             services.AddScoped<PupilType>();
             services.AddScoped<ClassType>();
-            services.AddDbContextPool<SchoolContext>(builder => builder.UseMySql(
-                $"Server={SchoolContext.Server};Database={SchoolContext.DatabaseName};" +
-                $"User={SchoolContext.User};Password={SchoolContext.Password};",
-                mySqlOptions =>
-                {
-                    mySqlOptions.ServerVersion(new Version(8, 0, 18), ServerType.MySql);
-                }));
+            services.AddDbContextPool<SchoolContext>(builder => builder.UseLoggerFactory(MyLoggerFactory)
+                .UseMySql(
+                    $"Server={SchoolContext.Server};Database={SchoolContext.DatabaseName};" +
+                    $"User={SchoolContext.User};Password={SchoolContext.Password};",
+                    mySqlOptions =>
+                    {
+                        mySqlOptions.ServerVersion(new Version(8, 0, 18), ServerType.MySql);
+                    }));
 
             services.AddScoped<IDbContext>(provider => provider.GetService<SchoolContext>());
             services.AddScoped<DbContext>(provider => provider.GetService<SchoolContext>());
@@ -51,6 +53,11 @@ namespace BasicCollectionLoaderTest
                 options.AllowSynchronousIO = true;
             });
         }
+
+        private static readonly LoggerFactory MyLoggerFactory =
+            new LoggerFactory(new[] {
+                new Microsoft.Extensions.Logging.Debug.DebugLoggerProvider()
+            });
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

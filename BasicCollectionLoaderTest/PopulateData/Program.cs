@@ -1,6 +1,7 @@
 ﻿using System;
 using SchoolEfCore.Context;
 using SchoolEfCore.Entities;
+using SchoolEfCore.Interfaces;
 
 namespace PopulateData
 {
@@ -38,7 +39,7 @@ namespace PopulateData
             maths.AddPupilTooClass(mac);
             maths.AddPupilTooClass(joe);
 
-            SchoolContext context = new SchoolContext(SchoolContext.DefaultOptions.Options);
+            ISchoolContext context = new SchoolContext(SchoolContext.DefaultOptions.Options);
 
             context.Pupils.Add(phil);
             context.Pupils.Add(joe);
