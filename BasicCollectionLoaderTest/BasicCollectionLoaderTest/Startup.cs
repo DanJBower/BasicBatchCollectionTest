@@ -1,5 +1,7 @@
+using System;
 using BasicCollectionLoaderTest.GraphQlConfig;
 using BasicCollectionLoaderTest.School;
+using BasicCollectionLoaderTest.Types;
 using GraphiQl;
 using GraphQL;
 using GraphQL.DataLoader;
@@ -7,8 +9,12 @@ using GraphQL.NewtonsoftJson;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using SchoolEfCore.Context;
+using SchoolEfCore.Interfaces;
 
 namespace BasicCollectionLoaderTest
 {
@@ -25,16 +31,25 @@ namespace BasicCollectionLoaderTest
             services.AddSingleton<DataLoaderDocumentListener>();
             services.AddScoped<SchoolQuery>();
             services.AddScoped<ISchema, SchoolSchema>();
+            services.AddScoped<PupilType>();
+            services.AddScoped<ClassType>();
+            services.AddDbContextPool<SchoolContext>(builder => builder.UseMySql(
+                $"Server={SchoolContext.Server};Database={SchoolContext.DatabaseName};" +
+                $"User={SchoolContext.User};Password={SchoolContext.Password};",
+                mySqlOptions =>
+                {
+                    mySqlOptions.ServerVersion(new Version(8, 0, 18), ServerType.MySql);
+                }));
 
+            services.AddScoped<IDbContext>(provider => provider.GetService<SchoolContext>());
+            services.AddScoped<DbContext>(provider => provider.GetService<SchoolContext>());
+            services.AddScoped<ISchoolContext>(provider => provider.GetService<SchoolContext>());
+            services.AddControllers();
 
-
-            // TODO Try removing this
-            // This has to be allowed as the GraphQL Middleware Deserialize method is required to be synchronous
-            // for now. Hopefully they will fix in an update and this can be removed.
-            /*services.Configure<IISServerOptions>(options =>
+            services.Configure<IISServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
-            });*/
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
