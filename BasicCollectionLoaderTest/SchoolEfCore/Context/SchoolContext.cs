@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using SchoolEfCore.Entities;
 using SchoolEfCore.Interfaces;
@@ -13,27 +14,23 @@ namespace SchoolEfCore.Context
         {
         }
 
-        public SchoolContext() : base(DefaultOptions)
-        {
-        }
-
         public DbSet<Class> Classes { get; set; }
 
         public DbSet<ClassPupil> ClassPupil { get; set; }
 
         public DbSet<Pupil> Pupils { get; set; }
 
-        private const string Server = "localhost,3306";
-        private const string DatabaseName = "batch_school";
-        private const string User = "root";
-        private const string Password = "YOUR PASSWORD";
+        public const string Server = "localhost,3306";
+        public const string DatabaseName = "batch_school";
+        public const string User = "root";
+        public const string Password = "YOUR PASSWORD";
 
-        private static DbContextOptions DefaultOptions => new DbContextOptionsBuilder().UseMySql(
+        public static DbContextOptionsBuilder DefaultOptions => new DbContextOptionsBuilder().UseMySql(
             $"Server={Server};Database={DatabaseName};User={User};Password={Password};",
             mySqlOptions =>
             {
                 mySqlOptions.ServerVersion(new Version(8, 0, 18), ServerType.MySql);
-            }).Options;
+            });
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
