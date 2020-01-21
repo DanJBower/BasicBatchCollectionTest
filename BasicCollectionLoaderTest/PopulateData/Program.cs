@@ -38,7 +38,7 @@ namespace PopulateData
             maths.AddPupilTooClass(mac);
             maths.AddPupilTooClass(joe);
 
-            SchoolContext context = new SchoolContext();
+            SchoolContext context = new SchoolContext(SchoolContext.DefaultOptions.Options);
 
             context.Pupils.Add(phil);
             context.Pupils.Add(joe);

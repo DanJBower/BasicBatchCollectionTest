@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolEfCore\SchoolEfCore.csproj" />
+    <ProjectReference Include="..\School\School.csproj" />
   </ItemGroup>
 
 </Project>

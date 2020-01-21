@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using School;
 
 namespace SchoolEfCore.Entities
 {
-    public class Pupil
+    public class Pupil : IPupil
     {
         public Pupil()
         {

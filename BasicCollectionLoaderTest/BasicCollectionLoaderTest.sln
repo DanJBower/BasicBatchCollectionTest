@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicCollectionLoaderTest", "BasicCollectionLoaderTest\BasicCollectionLoaderTest.csproj", "{EB97E40D-CC90-4642-A03D-5BBF3C19CCDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulateData", "PopulateData\PopulateData.csproj", "{1F160BB7-2E7E-4152-9C71-7DAF69E28F1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopulateData", "PopulateData\PopulateData.csproj", "{1F160BB7-2E7E-4152-9C71-7DAF69E28F1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolEfCore", "SchoolEfCore\SchoolEfCore.csproj", "{A6401F1F-75FA-4EC8-8E47-3C346A8C5952}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolEfCore", "SchoolEfCore\SchoolEfCore.csproj", "{A6401F1F-75FA-4EC8-8E47-3C346A8C5952}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School", "School\School.csproj", "{0E77EF07-6108-4D27-BF0F-D428129FC6FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A6401F1F-75FA-4EC8-8E47-3C346A8C5952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6401F1F-75FA-4EC8-8E47-3C346A8C5952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6401F1F-75FA-4EC8-8E47-3C346A8C5952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E77EF07-6108-4D27-BF0F-D428129FC6FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E77EF07-6108-4D27-BF0F-D428129FC6FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E77EF07-6108-4D27-BF0F-D428129FC6FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E77EF07-6108-4D27-BF0F-D428129FC6FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
