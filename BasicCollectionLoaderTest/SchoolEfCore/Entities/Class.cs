@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using School;
 
@@ -18,6 +19,7 @@ namespace SchoolEfCore.Entities
 
         public ICollection<ClassPupil> ClassPupil { get; set; }
 
-        public IEnumerable<IPupil> Pupils => ClassPupil.Select(_ => _.Pupil);
+        [NotMapped]
+        public IEnumerable<IPupil> Pupils { get; set; }
     }
 }
