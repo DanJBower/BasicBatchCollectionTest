@@ -1,4 +1,5 @@
-﻿using Boerman.GraphQL.Contrib.DataLoaders;
+﻿// using Boerman.GraphQL.Contrib.DataLoaders;
+using BasicCollectionLoaderTest.SourceCopy;
 using GraphQL.DataLoader;
 using GraphQL.Types;
 using SchoolEfCore.Entities;
