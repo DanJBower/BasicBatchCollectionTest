@@ -35,6 +35,7 @@ namespace BasicCollectionLoaderTest
             services.AddScoped<PupilType>();
             services.AddScoped<ClassType>();
             services.AddDbContextPool<SchoolContext>(builder => builder.UseLoggerFactory(MyLoggerFactory)
+                .EnableSensitiveDataLogging()
                 .UseMySql(
                     $"Server={SchoolContext.Server};Database={SchoolContext.DatabaseName};" +
                     $"User={SchoolContext.User};Password={SchoolContext.Password};",

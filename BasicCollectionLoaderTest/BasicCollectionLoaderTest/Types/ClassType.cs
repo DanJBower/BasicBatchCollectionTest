@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Boerman.GraphQL.Contrib.DataLoaders;
+﻿using Boerman.GraphQL.Contrib.DataLoaders;
 using GraphQL.DataLoader;
 using GraphQL.Types;
 using SchoolEfCore.Entities;
@@ -23,14 +21,13 @@ namespace BasicCollectionLoaderTest.Types
                 .ResolveAsync(
                     async context =>
                     {
-                        IList<Pupil> list = (await accessor.EntityCollectionLoader(
-                                () => schoolContext.ClassPupil,
-                                classesPupils => classesPupils.ClassId,
-                                select => select.Pupil,
-                                pupil => pupil.Id,
-                                context.Source.Id)
-                            .ConfigureAwait(false)).ToList();
-                        return list;
+                        return await accessor.EntityCollectionLoader(
+                            () => schoolContext.ClassPupil,
+                            classesPupils => classesPupils.ClassId,
+                            select => select.Pupil,
+                            pupil => pupil.Id,
+                            context.Source.Id)
+                                .ConfigureAwait(false);
                     });
         }
     }
