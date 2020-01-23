@@ -22,10 +22,10 @@ namespace SchoolEfCore.Context
         public const string Server = "localhost,3306";
         public const string DatabaseName = "batch_school";
         public const string User = "root";
-        public const string Password = "YOUR PASSWORD";
+        public const string Password = "";
 
         public static DbContextOptionsBuilder DefaultOptions => new DbContextOptionsBuilder().UseMySql(
-            $"Server={Server};Database={DatabaseName};User={User};Password={Password};",
+            $"Server={Server};Database={DatabaseName};User={User};",
             mySqlOptions =>
             {
                 mySqlOptions.ServerVersion(new Version(8, 0, 18), ServerType.MySql);
