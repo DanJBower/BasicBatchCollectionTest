@@ -1,9 +1,12 @@
-﻿// using Boerman.GraphQL.Contrib.DataLoaders;
+﻿//using Boerman.GraphQL.Contrib.DataLoaders;
 using BasicCollectionLoaderTest.SourceCopy;
 using GraphQL.DataLoader;
 using GraphQL.Types;
+using Microsoft.EntityFrameworkCore;
 using SchoolEfCore.Entities;
 using SchoolEfCore.Interfaces;
+using System;
+using System.Linq;
 
 namespace BasicCollectionLoaderTest.Types
 {
@@ -22,13 +25,14 @@ namespace BasicCollectionLoaderTest.Types
                 .ResolveAsync(
                     async context =>
                     {
-                        return await accessor.EntityCollectionLoader(
-                            () => schoolContext.ClassPupil,
-                            classesPupils => classesPupils.ClassId,
-                            select => select.Pupil,
-                            pupil => pupil.Id,
-                            context.Source.Id)
-                                .ConfigureAwait(false);
+                        var pupils = await accessor.EntityCollectionLoader(
+                            () => schoolContext.ClassPupil.Include(q => q.Pupil),
+                            q => q.ClassId,
+                            q => q,
+                            q => q.ClassId,
+                            context.Source.Id);
+
+                        return pupils.Select(q => q.Pupil);
                     });
         }
     }

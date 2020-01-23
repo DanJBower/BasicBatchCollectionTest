@@ -40,6 +40,8 @@ namespace PopulateData
             maths.AddPupilTooClass(joe);
 
             ISchoolContext context = new SchoolContext(SchoolContext.DefaultOptions.Options);
+            
+            context.Database.EnsureCreated();
 
             context.Pupils.Add(phil);
             context.Pupils.Add(joe);
